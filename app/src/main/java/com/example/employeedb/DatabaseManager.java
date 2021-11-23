@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DatabaseManager extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME="EmployeeDatabase";
+    private static final String DATABASE_NAME="ReservationDatabase";
     private static  final int DATABASE_VERSION=1;
     private static final String TABLE_NAME="employees2";
     private static final String COLUMN_ID="id";
@@ -15,6 +15,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
     private static final String COLUMN_DEPT="department";
     private static final String COLUMN_JOIN_DATE="joiningDate";
     private static final String COLUMN_SALARY="salary";
+    private static final String COLUMN_ADDRESS="address";
+    private static final String COLUMN_PHONE="phone";
+    private static final String COLUMN_TIME="time";
 
     DatabaseManager(Context context){
         super(context,DATABASE_NAME, null, DATABASE_VERSION);
@@ -29,6 +32,9 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 " " + COLUMN_ID + " INTEGER NOT NULL CONSTRAINT employees_pk PRIMARY KEY AUTOINCREMENT ,\n" +
                 " " + COLUMN_NAME + " varchar(200) NOT NULL, \n" +
                 " " + COLUMN_DEPT + " varchar(200) NOT NULL, \n" +
+                " " + COLUMN_ADDRESS + " varchar(200) NOT NULL, \n" +
+                " " + COLUMN_PHONE + " varchar(200) NOT NULL, \n" +
+                " " + COLUMN_TIME + " varchar(200) NOT NULL, \n" +
                 " " + COLUMN_JOIN_DATE + " datetime NOT NULL, \n" +
                 " " + COLUMN_SALARY + " double NOT NULL \n" +
                 ");";
@@ -45,10 +51,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
     }
 
     //operations
-    boolean addEmployee(String name, String dept, String joiningdate, double salary){
+    boolean addEmployee(String name, String address, String phone, String time, String dept, String joiningdate, double salary){
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_NAME,name);
         contentValues.put(COLUMN_DEPT,dept);
+
+        contentValues.put(COLUMN_ADDRESS,address);
+        contentValues.put(COLUMN_PHONE,phone);
+        contentValues.put(COLUMN_TIME,time);
+
         contentValues.put(COLUMN_JOIN_DATE,joiningdate);
         contentValues.put(COLUMN_SALARY,salary);
         SQLiteDatabase db = getWritableDatabase();
@@ -61,12 +72,17 @@ public class DatabaseManager extends SQLiteOpenHelper {
         return  db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
     }
 
-    boolean updateEmployee(int id, String name, String dept, double salary){
+    boolean updateEmployee(int id, String name, String address, String phone, String time, String dept, double salary){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COLUMN_NAME,name);
         contentValues.put(COLUMN_DEPT,dept);
         contentValues.put(COLUMN_SALARY,salary);
+
+        contentValues.put(COLUMN_ADDRESS,address);
+        contentValues.put(COLUMN_PHONE,phone);
+        contentValues.put(COLUMN_TIME,time);
+
         return db.update(TABLE_NAME, contentValues, COLUMN_ID + "=?",new String[]{String.valueOf(id)})== 1;
     }
 

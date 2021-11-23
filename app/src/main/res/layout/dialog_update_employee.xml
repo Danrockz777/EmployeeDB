@@ -27,6 +27,27 @@
             android:ems="10"
             android:hint="@string/enter_employee_name"
             android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/etTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/enter_employee_time"
+            android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/enter_employee_phone"
+            android:inputType="textPersonName" />
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/enter_employee_address"
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/tvSelectDept"

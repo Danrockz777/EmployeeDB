@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EmployeeDB</string>
+    <string name="app_name">Admin Dashboard for INTI Cafe</string>
     <string name="button_add">Add</string>
     <string name="button_view">View</string>
     <string name="tv_department">Select Delivery Method</string>
@@ -8,9 +8,12 @@
 
     <string name="tv_title2">Edit Reservation</string>
     <string name="tvName">Name</string>
-    <string name="tvSalary">Salary</string>
+    <string name="tvSalary">Payment</string>
     <string name="tvDepartment">Select Delivery Method</string>
     <string name="tvJoinDate">JoinDate</string>
+    <string name="tvAddress">Address</string>
+    <string name="tvPhone">Phone</string>
+    <string name="tvTime">Time</string>
 
     <string name="delete_button_text">Delete</string>
     <string name="tv_salary">Customer Payment</string>
@@ -32,6 +35,10 @@
     <string name="delete_employee">Delete</string>
     <string name="update_employee">Update</string>
     <string name="enter_employee_name">Enter Name</string>
+
+    <string name="enter_employee_phone">Enter Phone</string>
+    <string name="enter_employee_address">Enter Address</string>
+    <string name="enter_employee_time">Enter Time</string>
 
     <string name="enter_salary">Enter Customer Payment</string>
 

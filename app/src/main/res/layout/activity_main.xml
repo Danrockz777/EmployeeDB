@@ -27,6 +27,31 @@
         android:hint="Name"
         android:inputType="textPersonName" />
 
+    <EditText
+        android:id="@+id/etAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Customer Address"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/etPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Customer Phone Number"
+        android:inputType="textPersonName" />
+    <EditText
+        android:id="@+id/etTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Time"
+        android:inputType="textPersonName" />
 
 
     <TextView
@@ -49,7 +74,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:ems="10"
-        android:hint="Salary"
+        android:hint="Customer Payment Amount"
         android:inputType="number" />
 
     <Button

@@ -33,6 +33,27 @@
             android:textSize="18sp" />
 
         <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tvAddress"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tvPhone"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tvTime"
+            android:textSize="18sp" />
+
+        <TextView
             android:id="@+id/tvJoinDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

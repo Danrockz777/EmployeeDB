@@ -40,12 +40,19 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(layoutRes, null);
         TextView textViewName = view.findViewById(R.id.tvName);
+
+        TextView textViewPhone = view.findViewById(R.id.tvPhone);
+        TextView textViewAddress = view.findViewById(R.id.tvAddress);
+        TextView textViewTime = view.findViewById(R.id.tvTime);
         TextView textViewDept = view.findViewById(R.id.tvDepartment);
         TextView textViewSalary = view.findViewById(R.id.tvSalary);
         TextView textViewJoinDate = view.findViewById(R.id.tvJoinDate);
         final Employee employee = employeeList.get(position);
 
         textViewName.setText(employee.getName());
+        textViewPhone.setText(employee.getPhone());
+        textViewAddress.setText(employee.getAddress());
+        textViewTime.setText(employee.getTime());
         textViewDept.setText(employee.getDept());
         textViewSalary.setText(String.valueOf(employee.getSalary()));
         textViewJoinDate.setText(employee.getJoiningDate());
@@ -76,6 +83,11 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
         alertDialog.show();
 
         final EditText editTextName = view.findViewById(R.id.etName);
+
+        final EditText editTextPhone = view.findViewById(R.id.etPhone);
+        final EditText editTextAddress = view.findViewById(R.id.etAddress);
+        final EditText editTextTime = view.findViewById(R.id.etTime);
+
         final EditText editTextSalary = view.findViewById(R.id.etSalary);
         final Spinner spinner = view.findViewById(R.id.spinnerDepartment);
 
@@ -86,6 +98,10 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
             @Override
             public void onClick(View view) {
                 String name = editTextName.getText().toString();
+                String phone = editTextPhone.getText().toString();
+                String address = editTextAddress.getText().toString();
+                String time = editTextTime.getText().toString();
+
                 String salary = editTextSalary.getText().toString();
                 String dept = spinner.getSelectedItem().toString();
 
@@ -94,13 +110,31 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
                     editTextName.requestFocus();
                     return;
                 }
+
+                if(address.isEmpty()){
+                    editTextAddress.setError("Customer Address cant be empty");
+                    editTextAddress.requestFocus();
+                    return;
+                }
+
+                if(phone.isEmpty()){
+                    editTextPhone.setError("Customer Phone cant be empty");
+                    editTextPhone.requestFocus();
+                    return;
+                }
+
+                if(time.isEmpty()){
+                    editTextTime.setError("Customer Time cant be empty");
+                    editTextTime.requestFocus();
+                    return;
+                }
                 if (salary.isEmpty()) {
                     editTextSalary.setError("Payment can't be empty");
                     editTextSalary.requestFocus();
                     return;
                 }
                 //calling the update method from database manager instance
-                if (mDatabase.updateEmployee(employee.getId(), name, dept, Double.valueOf(salary))) {
+                if (mDatabase.updateEmployee(employee.getId(), name, address, phone, time, dept, Double.valueOf(salary))) {
                     Toast.makeText(mCtx, "Reservation Updated", Toast.LENGTH_SHORT).show();
                     loadEmployeesFromDatabaseAgain();
                 }
@@ -142,7 +176,10 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
                         cursor.getString(1),
                         cursor.getString(2),
                         cursor.getString(3),
-                        cursor.getDouble(4)
+                        cursor.getString(4),
+                        cursor.getString(5),
+                        cursor.getString(6),
+                        cursor.getDouble(7)
                 ));
             } while (cursor.moveToNext());
             notifyDataSetChanged();
